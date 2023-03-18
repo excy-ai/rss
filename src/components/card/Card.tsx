@@ -27,6 +27,10 @@ class Card extends React.Component<CardProps, CardState> {
         <img
           className={'card__image'}
           src={`https://cdn2.thecatapi.com/images/${this.props.reference_image_id}.jpg`}
+          onError={({ currentTarget }) => {
+            currentTarget.onerror = null;
+            currentTarget.src = './not-found-image.jpg';
+          }}
           alt={this.props.name}
         />
         <div className="card__description">
