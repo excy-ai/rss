@@ -1,15 +1,22 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import React from 'react';
 import pages from 'pages';
+import BaseLayout from 'components/layouts/base/BaseLayout';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: pages.Main,
-  },
-  {
-    path: '/about',
-    element: pages.AboutUs,
+    element: <BaseLayout />,
+    children: [
+      {
+        path: '',
+        element: pages.Main,
+      },
+      {
+        path: 'about',
+        element: pages.AboutUs,
+      },
+    ],
   },
   {
     path: '*',
