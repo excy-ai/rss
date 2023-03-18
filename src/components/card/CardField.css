@@ -1,0 +1,9 @@
+.card__field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.field__text {
+  display: flex;
+  align-items: center;
+}
