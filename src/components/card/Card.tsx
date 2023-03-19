@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CardField from 'components/card/CardField';
 
-import './Card.css';
+import 'components/card/Card.scss';
 
 type CardState = Record<string, never>;
 

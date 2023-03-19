@@ -3,7 +3,7 @@ import Search from 'components/search/Search';
 import Card from 'components/card/Card';
 import data from 'api/data.json';
 
-import 'pages/Main/Main.css';
+import 'pages/Main/Main.scss';
 
 type AppState = {
   query: string;

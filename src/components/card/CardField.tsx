@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './CardField.css';
+import 'components/card/CardField.scss';
 
 type CardFieldState = Record<string, never>;
 

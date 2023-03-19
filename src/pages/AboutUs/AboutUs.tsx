@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './AboutUs.css';
+import 'pages/AboutUs/AboutUs.scss';
 
 class AboutUs extends React.Component<Record<string, never>, Record<string, never>> {
   render() {
