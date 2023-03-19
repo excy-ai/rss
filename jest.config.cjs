@@ -12,6 +12,8 @@ module.exports = {
     '**/*.tsx',
     '!**/node_modules/**',
     '!**/vendor/**',
+    '!**/main.tsx',
+    '!**/pages/index.tsx',
   ],
   modulePaths: [compilerOptions.baseUrl],
   verbose: true,
