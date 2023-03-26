@@ -1,16 +1,9 @@
 import React from 'react';
+import { SearchProps, SearchState } from 'types';
 
 import 'components/search/Search.scss';
 
 const QUERY_KEY = 'query';
-
-interface SearchState {
-  query: string;
-}
-
-interface SearchProps {
-  onChange?: (query: string) => void;
-}
 
 class Search extends React.Component<SearchProps, SearchState> {
   state: SearchState = {
@@ -34,16 +27,16 @@ class Search extends React.Component<SearchProps, SearchState> {
   render() {
     return (
       <div className={'search-bar'}>
-        <label htmlFor={'main-label'} className={'search-label'}>
+        <label htmlFor={'main-search'} className={'search-label'}>
           Breed filter
+          <input
+            id={'main-search'}
+            className={'search-input'}
+            placeholder={'type something...'}
+            value={this.state.query}
+            onChange={this.onChange}
+          />
         </label>
-        <input
-          id={'main-search'}
-          className={'search-input'}
-          placeholder={'type something...'}
-          value={this.state.query}
-          onChange={this.onChange}
-        />
       </div>
     );
   }
