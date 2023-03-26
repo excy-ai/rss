@@ -7,7 +7,7 @@ import Header from 'components/header/Header';
 describe('Header', () => {
   it('should contain text elements', () => {
     render(<Header />, { wrapper: BrowserRouter });
-    expect(screen.getByText(/Main/i)).toBeInTheDocument();
+    expect(screen.getByText(/MainPage/i)).toBeInTheDocument();
     expect(screen.getByText(/About Us/i)).toBeInTheDocument();
   });
 });
