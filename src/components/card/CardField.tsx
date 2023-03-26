@@ -1,15 +1,9 @@
 import React from 'react';
+import { CardFieldProps } from 'types';
 
 import 'components/card/CardField.scss';
 
-type CardFieldState = Record<string, never>;
-
-interface CardFieldProps {
-  caption: string;
-  children: string | React.ReactNode;
-}
-
-class CardField extends React.Component<CardFieldProps, CardFieldState> {
+class CardField extends React.Component<CardFieldProps> {
   render() {
     return (
       <p className="card__field">
