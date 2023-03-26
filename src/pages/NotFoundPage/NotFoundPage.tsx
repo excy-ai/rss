@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import 'pages/NotFound/NotFound.scss';
+import 'pages/NotFoundPage/NotFoundPage.scss';
 
-class NotFound extends React.Component<Record<string, never>, Record<string, never>> {
+class NotFoundPage extends React.Component<Record<string, never>, Record<string, never>> {
   render() {
     return (
       <div className={'not-found-container'}>
@@ -17,4 +17,4 @@ class NotFound extends React.Component<Record<string, never>, Record<string, nev
   }
 }
 
-export default NotFound;
+export default NotFoundPage;
