@@ -11,10 +11,12 @@ export interface ValueWithRef<T> {
 
 const toValueWithRef = <T>(it: string | number): ValueWithRef<T> => {
   return {
-    id: uuid(),
+    id: generateId(),
     value: it,
     ref: React.createRef<T>(),
   };
 };
 
-export { toValueWithRef };
+const generateId = uuid;
+
+export { toValueWithRef, generateId };

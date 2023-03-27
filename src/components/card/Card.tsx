@@ -12,26 +12,31 @@ class Card extends React.Component<CardProps> {
   };
 
   render() {
-    const flagUrl = `https://flagcdn.com/${this.props.country_code.toLowerCase()}.svg`;
-    const imageUrl = this.props.reference_image_id
-      ? `https://cdn2.thecatapi.com/images/${this.props.reference_image_id}.jpg`
-      : this.props.image_url;
+    const {
+      reference_image_id,
+      origin,
+      country_code,
+      weight,
+      wikipedia_url,
+      name,
+      description,
+      life_span,
+      date,
+      temperament,
+      image_url,
+    } = this.props;
+    const flagUrl = `https://flagcdn.com/${country_code.toLowerCase()}.svg`;
+    const imageUrl = reference_image_id
+      ? `https://cdn2.thecatapi.com/images/${reference_image_id}.jpg`
+      : image_url;
+    const title = name.length > 25 ? name.substring(0, 25) : name;
     return (
       <div className="card">
-        <h3>{this.props.name}</h3>
-        <img
-          className={'card__image'}
-          src={imageUrl}
-          onError={this.onImageError}
-          alt={this.props.name}
-        />
+        <h3>{title}</h3>
+        <img className={'card__image'} src={imageUrl} onError={this.onImageError} alt={title} />
         <div className="card__description">
-          {this.props.description ? (
-            <details>{this.props.description}</details>
-          ) : (
-            <div className="details-gap" />
-          )}
-          {this.props.date && <CardField caption="Date of invention">{this.props.date}</CardField>}
+          {description ? <details>{description}</details> : <div className="details-gap" />}
+          {date && <CardField caption="Date of invention">{date}</CardField>}
           <CardField caption={'Country'}>
             <img
               className="country-image"
@@ -41,14 +46,14 @@ class Card extends React.Component<CardProps> {
               width="30px"
               onError={this.onImageError}
             />
-            {this.props.origin}
+            {origin}
           </CardField>
-          <CardField caption="Weight">{this.props.weight} kg</CardField>
-          <CardField caption="Avg life span">{this.props.life_span}</CardField>
-          <CardField caption="Temperament">{this.props.temperament}</CardField>
+          <CardField caption="Weight">{weight} kg</CardField>
+          <CardField caption="Avg life span">{life_span}</CardField>
+          <CardField caption="Temperament">{temperament}</CardField>
         </div>
-        {this.props.wikipedia_url && (
-          <Link target="_blank" to={this.props.wikipedia_url}>
+        {wikipedia_url && (
+          <Link target="_blank" to={wikipedia_url}>
             WIKI
           </Link>
         )}

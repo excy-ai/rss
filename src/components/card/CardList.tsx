@@ -15,7 +15,7 @@ export class CardList extends React.Component<CardListProps> {
     return (
       <div className={classNames('card-list', this.props.className)}>
         {this.props.data.map((it) => (
-          <Card key={it.name} {...it} />
+          <Card key={it.id || it.name} {...it} />
         ))}
       </div>
     );

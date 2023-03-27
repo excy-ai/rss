@@ -4,6 +4,7 @@ import SelectField from 'components/select/SelectField';
 import { Form } from 'components/form/Form';
 import { AddCardFormProps, AddCardFormState, CardProps, Validation, ValidationError } from 'types';
 import {
+  generateId,
   generateIsAnyCheckedValidation,
   generateIsFieldEmptyValidation,
   toValueWithRef,
@@ -56,6 +57,7 @@ export class AddCardForm extends React.Component<AddCardFormProps, AddCardFormSt
     const file = files ? files[0] : undefined;
     const imageUrl = file ? URL.createObjectURL(file) : undefined;
     const card: CardProps = {
+      id: generateId(),
       date: this.dateRef.current?.value,
       weight: this.weightRef.current?.value || this.props.weights[0],
       name: this.breedNameRef.current?.value || 'Unknown',

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ReactNode } from 'react';
 
 export interface CardProps {
+  id?: string;
   date?: string;
   weight: string;
   name: string;
