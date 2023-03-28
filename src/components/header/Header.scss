@@ -1,0 +1,27 @@
+.header {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.nav-menu {
+  display: flex;
+}
+
+.nav-list {
+  width: 100%;
+  justify-content: space-around;
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+
+  & .active {
+    cursor: not-allowed;
+    color: #FFFFFF;
+    @media (prefers-color-scheme: light) {
+      color: #000000;
+    }
+  }
+}
