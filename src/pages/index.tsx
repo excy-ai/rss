@@ -1,10 +1,12 @@
 import React from 'react';
-import Main from 'pages/Main/Main';
-import NotFound from 'pages/NotFound/NotFound';
-import AboutUs from 'pages/AboutUs/AboutUs';
+import MainPage from 'pages/MainPage/MainPage';
+import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
+import AboutUsPage from 'pages/AboutUsPage/AboutUsPage';
+import FormPage from 'pages/FormPage/FormPage';
 
 export default {
-  Main: <Main />,
-  NotFound: <NotFound />,
-  AboutUs: <AboutUs />,
+  Main: <MainPage />,
+  NotFound: <NotFoundPage />,
+  AboutUs: <AboutUsPage />,
+  Form: <FormPage />,
 };

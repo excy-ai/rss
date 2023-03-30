@@ -2,16 +2,16 @@ import '@testing-library/jest-dom';
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import Main from 'pages/Main/Main';
+import MainPage from 'pages/MainPage/MainPage';
 
-describe('Main', () => {
+describe('MainPage', () => {
   it('should contains search & cards', () => {
-    render(<Main />, { wrapper: BrowserRouter });
+    render(<MainPage />, { wrapper: BrowserRouter });
     expect(screen.getByText('Breed filter')).toBeInTheDocument();
     expect(screen.getByText('Abyssinian')).toBeInTheDocument();
   });
   it('should not contain extra card if search input filled', () => {
-    render(<Main />, { wrapper: BrowserRouter });
+    render(<MainPage />, { wrapper: BrowserRouter });
     expect(screen.getByText('Breed filter')).toBeInTheDocument();
     expect(screen.getByText('Abyssinian')).toBeInTheDocument();
     expect(screen.getByText('Siberian')).toBeInTheDocument();

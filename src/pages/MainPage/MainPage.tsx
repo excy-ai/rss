@@ -2,15 +2,12 @@ import React from 'react';
 import Search from 'components/search/Search';
 import Card from 'components/card/Card';
 import data from 'api/data.json';
+import { MainPageState } from 'types';
 
-import 'pages/Main/Main.scss';
+import 'pages/MainPage/MainPage.scss';
 
-type AppState = {
-  query: string;
-};
-
-class Main extends React.Component<Record<string, never>, AppState> {
-  state: AppState = {
+class MainPage extends React.Component<Record<string, never>, MainPageState> {
+  state: MainPageState = {
     query: '',
   };
 
@@ -34,4 +31,4 @@ class Main extends React.Component<Record<string, never>, AppState> {
   }
 }
 
-export default Main;
+export default MainPage;

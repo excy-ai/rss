@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import 'pages/AboutUs/AboutUs.scss';
+import 'pages/AboutUsPage/AboutUsPage.scss';
 
-class AboutUs extends React.Component<Record<string, never>, Record<string, never>> {
+class AboutUsPage extends React.Component<Record<string, never>, Record<string, never>> {
   render() {
     return (
       <div className={'about-us-container'}>
@@ -13,4 +13,4 @@ class AboutUs extends React.Component<Record<string, never>, Record<string, neve
   }
 }
 
-export default AboutUs;
+export default AboutUsPage;

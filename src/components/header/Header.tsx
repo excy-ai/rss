@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import routes from 'router/routes';
 
 import 'components/header/Header.scss';
 
@@ -10,10 +11,13 @@ class Header extends React.Component {
         <nav className={'nav-menu'}>
           <ul className={'nav-list'}>
             <li className={'nav-list_item'}>
-              <NavLink to={'/'}>Main</NavLink>
+              <NavLink to={routes.main}>Main</NavLink>
             </li>
             <li className={'nav-list_item'}>
-              <NavLink to={'/about'}>About Us</NavLink>
+              <NavLink to={routes.aboutUs}>About Us</NavLink>
+            </li>
+            <li className={'nav-list_item'}>
+              <NavLink to={routes.form}>Form</NavLink>
             </li>
           </ul>
         </nav>
