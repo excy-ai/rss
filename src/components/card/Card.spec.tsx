@@ -1,8 +1,10 @@
-import '@testing-library/jest-dom';
 import React from 'react';
+
+import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
-import Card from 'components/card/Card';
 import { BrowserRouter } from 'react-router-dom';
+
+import Card from 'components/card/Card';
 
 const testCatData = {
   weight: '1',

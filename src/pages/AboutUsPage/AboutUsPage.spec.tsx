@@ -1,8 +1,10 @@
-import '@testing-library/jest-dom';
 import React from 'react';
+
+import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import AboutUsPage from 'pages/AboutUsPage/AboutUsPage';
 import { BrowserRouter } from 'react-router-dom';
+
+import AboutUsPage from 'pages/AboutUsPage/AboutUsPage';
 
 describe('AboutUsPage', () => {
   it('should contains Go Home', () => {

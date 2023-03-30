@@ -1,6 +1,8 @@
-import '@testing-library/jest-dom';
 import React from 'react';
+
+import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
+
 import CardField from 'components/card/CardField';
 
 describe('CardField', () => {

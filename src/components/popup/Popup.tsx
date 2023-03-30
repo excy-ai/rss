@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { FC } from 'react';
+
 import './Popup.scss';
 
 interface PopupProps {
@@ -7,17 +8,13 @@ interface PopupProps {
   offset?: number;
 }
 
-export class Popup extends React.Component<PopupProps> {
-  render() {
-    const offset = this.props.offset || 1;
-    return (
-      <div
-        onClick={this.props.onBackgroundClick}
-        style={{ zIndex: offset }}
-        className="popup__background"
-      >
-        <div className="popup">{this.props.children}</div>
-      </div>
-    );
-  }
-}
+const Popup: FC<PopupProps> = (props) => {
+  const offset = props.offset || 1;
+  return (
+    <div onClick={props.onBackgroundClick} style={{ zIndex: offset }} className="popup__background">
+      <div className="popup">{props.children}</div>
+    </div>
+  );
+};
+
+export default Popup;

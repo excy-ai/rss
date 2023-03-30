@@ -1,7 +1,9 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
 import React from 'react';
-import pages from 'pages';
+
+import { createBrowserRouter, Navigate } from 'react-router-dom';
+
 import BaseLayout from 'components/layouts/base/BaseLayout';
+import pages from 'pages';
 import routes from 'router/routes';
 
 const router = createBrowserRouter([
