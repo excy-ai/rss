@@ -17,6 +17,7 @@ const Search: FC<SearchProps> = (props) => {
           id={'main-search'}
           className={'search-input'}
           placeholder={'type something...'}
+          ref={props.refProp}
           value={props.query}
           onChange={onChange}
         />

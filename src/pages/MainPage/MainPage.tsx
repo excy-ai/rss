@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 
 import data from 'api/data.json';
 import Card from 'components/card/Card';
@@ -9,15 +9,17 @@ import 'pages/MainPage/MainPage.scss';
 const QUERY_KEY = 'query';
 
 const MainPage: FC = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState(localStorage.getItem(QUERY_KEY) || '');
   useEffect(() => {
+    const inputRefClosure = { ...inputRef };
     return () => {
-      localStorage.setItem(QUERY_KEY, query);
+      localStorage.setItem(QUERY_KEY, inputRefClosure.current?.value || '');
     };
-  });
+  }, []);
   return (
     <main className="main">
-      <Search query={query} onChange={(query) => setQuery(query)} />
+      <Search refProp={inputRef} query={query} onChange={(query) => setQuery(query)} />
       <div className="card-list-container">
         {data
           .filter(
