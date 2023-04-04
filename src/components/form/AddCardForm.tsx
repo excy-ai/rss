@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 
@@ -55,7 +55,7 @@ const AddCardForm: FC<AddCardFormProps> = (props) => {
     reset();
     togglePopup();
   };
-  const required = { required: 'Field cannot be empty' };
+  const basicValidation = { required: 'Field cannot be empty' };
   const errorPlaceholder = <div className="form__error-placeholder" />;
 
   return (
@@ -65,7 +65,7 @@ const AddCardForm: FC<AddCardFormProps> = (props) => {
         <InputField
           id="field-name"
           name="breed"
-          register={() => register('breed', required)}
+          register={() => register('breed', basicValidation)}
           type="text"
           label="Breed name"
           error={errors.breed?.message}
@@ -73,7 +73,7 @@ const AddCardForm: FC<AddCardFormProps> = (props) => {
         <InputField
           id="field-date"
           name="date"
-          register={() => register('date', required)}
+          register={() => register('date', basicValidation)}
           type="date"
           label="Date of invention"
           error={errors.date?.message}
@@ -88,7 +88,7 @@ const AddCardForm: FC<AddCardFormProps> = (props) => {
           {props.temperaments.map((it) => (
             <InputField
               key={it}
-              register={() => register('temperament', required)}
+              register={() => register('temperament', basicValidation)}
               name="temperament"
               type="checkbox"
               value={it}
@@ -106,7 +106,7 @@ const AddCardForm: FC<AddCardFormProps> = (props) => {
           {props.lifespans.map((it) => (
             <InputField
               key={it}
-              register={() => register('lifespan', required)}
+              register={() => register('lifespan', basicValidation)}
               name="lifespan"
               type="radio"
               value={it}
@@ -120,7 +120,7 @@ const AddCardForm: FC<AddCardFormProps> = (props) => {
           )}
         </div>
         <InputField
-          register={() => register('image', required)}
+          register={() => register('image', basicValidation)}
           name="image"
           label="Image"
           id="field-file"

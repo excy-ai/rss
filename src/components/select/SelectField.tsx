@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import { SelectFieldProps } from 'types';
 
@@ -9,19 +9,17 @@ const SelectField: FC<SelectFieldProps> = (props) => {
   const id = `select-${label}`;
   const registerData = register ? register() : {};
   return (
-    <>
-      <label htmlFor={id} className="select-field">
-        <span>{label}</span>
-        <select id={id} {...registerData} className="select-field__select">
-          {options.map((it) => (
-            <option key={it} value={it}>
-              {it}
-            </option>
-          ))}
-        </select>
-        {error && <span>{error}</span>}
-      </label>
-    </>
+    <label htmlFor={id} className="select-field">
+      <span>{label}</span>
+      <select id={id} {...registerData} className="select-field__select">
+        {options.map((it) => (
+          <option key={it} value={it}>
+            {it}
+          </option>
+        ))}
+      </select>
+      {error && <span>{error}</span>}
+    </label>
   );
 };
 

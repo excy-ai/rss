@@ -1,4 +1,4 @@
-import React, { FC, ReactEventHandler } from 'react';
+import { FC, ReactEventHandler } from 'react';
 
 import { Link } from 'react-router-dom';
 

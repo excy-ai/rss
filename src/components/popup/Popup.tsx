@@ -1,19 +1,24 @@
-import React, { FC } from 'react';
+import { FC, ReactNode } from 'react';
+
+import { createPortal } from 'react-dom';
+
+import { BASIC_OFFSET } from 'components/constants';
 
 import './Popup.scss';
 
 interface PopupProps {
-  children: React.ReactNode;
+  children: ReactNode;
   onBackgroundClick?: () => void;
   offset?: number;
 }
 
 const Popup: FC<PopupProps> = (props) => {
-  const offset = props.offset || 1;
-  return (
+  const offset = props.offset || BASIC_OFFSET;
+  return createPortal(
     <div onClick={props.onBackgroundClick} style={{ zIndex: offset }} className="popup__background">
       <div className="popup">{props.children}</div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

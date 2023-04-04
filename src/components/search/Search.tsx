@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 
 import { SearchProps } from 'types';
 
 import 'components/search/Search.scss';
 
 const Search: FC<SearchProps> = (props) => {
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     props.onChange?.(event.target.value);
   };
 
