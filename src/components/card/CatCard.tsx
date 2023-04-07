@@ -1,17 +1,14 @@
-import { FC, ReactEventHandler } from 'react';
+import { FC } from 'react';
 
 import { Link } from 'react-router-dom';
 
 import CardField from 'components/card/CardField';
-import { CardProps } from 'types';
+import { CatCardProps } from 'types';
+import { onImageError } from 'utils';
 
 import 'components/card/Card.scss';
 
-const Card: FC<CardProps> = (props) => {
-  const onImageError: ReactEventHandler<HTMLImageElement> = ({ currentTarget }) => {
-    currentTarget.onerror = null;
-    currentTarget.src = './not-found-image.jpg';
-  };
+const CatCard: FC<CatCardProps> = (props) => {
   const {
     reference_image_id,
     origin,
@@ -61,4 +58,4 @@ const Card: FC<CardProps> = (props) => {
   );
 };
 
-export default Card;
+export default CatCard;

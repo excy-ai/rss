@@ -23,7 +23,7 @@ describe('Search', () => {
   });
   it('should call onChange prop on input change', () => {
     const onChangePropFn = jest.fn();
-    render(<Search onChange={onChangePropFn} />, { wrapper: BrowserRouter });
+    render(<Search onSearch={onChangePropFn} />, { wrapper: BrowserRouter });
     fireEvent.change(screen.getByPlaceholderText(searchPlaceHolderRegex), {
       target: { value: searchText },
     });

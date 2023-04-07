@@ -1,16 +1,16 @@
 import { FC, useState } from 'react';
 
 import { lifespans, temperaments, weights } from 'api/values.json';
-import { CardList } from 'components/card/CardList';
+import { CatCardList } from 'components/card/CatCardList';
 import AddCardForm from 'components/form/AddCardForm';
-import { CardProps } from 'types';
+import { CatCardProps } from 'types';
 
 import 'pages/FormPage/FormPage.scss';
 
 const FormPage: FC = () => {
-  const [cards, setCards] = useState<CardProps[]>([]);
+  const [cards, setCards] = useState<CatCardProps[]>([]);
 
-  const handleSubmit = (card: CardProps) => {
+  const handleSubmit = (card: CatCardProps) => {
     setCards([...cards, card]);
   };
   return (
@@ -23,7 +23,7 @@ const FormPage: FC = () => {
           handleSubmit={handleSubmit}
         />
       </aside>
-      <CardList data={cards} className="form-page__content" />
+      <CatCardList data={cards} className="form-page__content" />
     </div>
   );
 };
