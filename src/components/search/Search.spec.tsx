@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
+
 import Search from 'components/search/Search';
 
 describe('Search', () => {

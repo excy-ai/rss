@@ -1,23 +1,25 @@
-import React from 'react';
+import { FC, ReactNode } from 'react';
+
+import { createPortal } from 'react-dom';
+
+import { BASIC_OFFSET } from 'components/constants';
+
 import './Popup.scss';
 
 interface PopupProps {
-  children: React.ReactNode;
+  children: ReactNode;
   onBackgroundClick?: () => void;
   offset?: number;
 }
 
-export class Popup extends React.Component<PopupProps> {
-  render() {
-    const offset = this.props.offset || 1;
-    return (
-      <div
-        onClick={this.props.onBackgroundClick}
-        style={{ zIndex: offset }}
-        className="popup__background"
-      >
-        <div className="popup">{this.props.children}</div>
-      </div>
-    );
-  }
-}
+const Popup: FC<PopupProps> = (props) => {
+  const offset = props.offset || BASIC_OFFSET;
+  return createPortal(
+    <div onClick={props.onBackgroundClick} style={{ zIndex: offset }} className="popup__background">
+      <div className="popup">{props.children}</div>
+    </div>,
+    document.body
+  );
+};
+
+export default Popup;

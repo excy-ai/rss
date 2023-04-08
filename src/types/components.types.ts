@@ -1,5 +1,6 @@
-import * as React from 'react';
-import { ReactNode } from 'react';
+import { ReactNode, RefObject } from 'react';
+
+import { FieldValues } from 'react-hook-form';
 
 export interface CardProps {
   id?: string;
@@ -21,30 +22,20 @@ export interface CardFieldProps {
   children: string | ReactNode;
 }
 
-export interface ValidationError {
-  id: string;
-  message: string;
-}
-
-export type Validation = () => ValidationError | undefined;
-
 export interface FormProps {
   className?: string;
   onSubmit: () => void;
-  validations: Validation[];
-  onError: (errors: ValidationError[]) => void;
-  children: React.ReactNode | JSX.Element;
-  refProp?: React.RefObject<HTMLFormElement>;
+  children: ReactNode | JSX.Element;
 }
 
 export interface InputFieldProps {
   id: string;
+  register?: () => FieldValues;
   type: string;
   value?: string | number;
   label?: string;
   name?: string;
-  error?: ValidationError;
-  refProp?: React.RefObject<HTMLInputElement>;
+  error?: string;
   className?: string;
   inputClassName?: string;
   labelClassName?: string;
@@ -52,17 +43,15 @@ export interface InputFieldProps {
   hideError?: boolean;
 }
 
-export interface SearchState {
-  query: string;
-}
-
 export interface SearchProps {
+  query?: string;
+  refProp?: RefObject<HTMLInputElement>;
   onChange?: (query: string) => void;
 }
 
 export interface SelectFieldProps {
+  register: () => FieldValues;
   label: string;
   options: string[];
-  refProp: React.Ref<HTMLSelectElement>;
-  error?: ValidationError;
+  error?: string;
 }
