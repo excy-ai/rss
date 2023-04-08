@@ -32,6 +32,7 @@ const Search: FC<SearchProps> = (props) => {
       </label>
       <button
         id={'main-search'}
+        data-testid={'main-search'}
         className={'search-input__button'}
         onClick={() => {
           props.onSearch?.(props.refProp?.current?.value || '');

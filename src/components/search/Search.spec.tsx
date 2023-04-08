@@ -9,7 +9,7 @@ describe('Search', () => {
   const searchPlaceHolderRegex = /Type something/i;
   it('should contain input', () => {
     render(<Search />, { wrapper: BrowserRouter });
-    expect(screen.getByText(/Breed filter/i)).toBeInTheDocument();
+    expect(screen.getByText(/Rick and Morty/i)).toBeInTheDocument();
     expect(screen.getByPlaceholderText(searchPlaceHolderRegex)).toBeInTheDocument();
   });
   it('should change input value', async () => {
@@ -24,9 +24,7 @@ describe('Search', () => {
   it('should call onChange prop on input change', () => {
     const onChangePropFn = jest.fn();
     render(<Search onSearch={onChangePropFn} />, { wrapper: BrowserRouter });
-    fireEvent.change(screen.getByPlaceholderText(searchPlaceHolderRegex), {
-      target: { value: searchText },
-    });
+    fireEvent.click(screen.getByTestId(/main-search/i));
     expect(onChangePropFn).toHaveBeenCalled();
   });
 });
