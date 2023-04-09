@@ -1,14 +1,10 @@
 import { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { debounce } from 'lodash';
-import { BallTriangle } from 'react-loader-spinner';
 
-import {
-  rickAndMortyApiClient,
-  RickAndMortyApiResponse,
-  rickAndMortyApiRoutes,
-} from 'api/RickAndMortyApiClient';
+import { rickAndMortyApiClient } from 'api/RickAndMortyApiClient';
 import RickAndMortyCard from 'components/card/RickAndMortyCard';
+import BaseLoader from 'components/loader/BaseLoader';
 import Search from 'components/search/Search';
 import { RickAndMortyCardProps } from 'types';
 
@@ -32,15 +28,7 @@ const MainPage: FC = () => {
     () =>
       debounce((value: string) => {
         rickAndMortyApiClient
-          .get<RickAndMortyApiResponse<RickAndMortyCardProps>>(
-            rickAndMortyApiRoutes.getCharacters,
-            {
-              params: {
-                name: value,
-              },
-            }
-          )
-          .then((r) => r.data.results)
+          .getCharacters(value)
           .then((cards) => {
             setCards(cards);
             setIsLoading(false);
@@ -70,20 +58,10 @@ const MainPage: FC = () => {
       )}
     </>
   );
-  const spinner = (
-    <BallTriangle
-      height={100}
-      width={100}
-      radius={5}
-      color="#363636"
-      ariaLabel="ball-triangle-loading"
-      visible
-    />
-  );
   return (
     <main className="main">
       <Search refProp={inputRef} query={query} onSearch={handleSearch} />
-      <div className="card-list-container">{isLoading ? spinner : cardList}</div>
+      <div className="card-list-container">{isLoading ? <BaseLoader /> : cardList}</div>
     </main>
   );
 };

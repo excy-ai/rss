@@ -158,13 +158,14 @@ describe('MainPage', () => {
   });
   it('popupOpened', async () => {
     mockedAxios.get.mockResolvedValueOnce({ data: dataResult });
+    mockedAxios.get.mockResolvedValueOnce({ data: dataResult.results[1] });
     render(<MainPage />, { wrapper: BrowserRouter });
-    await waitFor(() => {
+    await waitFor(async () => {
       expect(mockedAxios.get).toHaveBeenCalled();
-      const card = screen.getByText(/Evil Summer Clone/);
+      const card = screen.getByText(/Evil Summer Clone/i);
       expect(card).toBeInTheDocument();
       fireEvent.click(card);
-      expect(screen.getByText(/Species/)).toBeInTheDocument();
+      await waitFor(() => expect(screen.getByText(/Species/)).toBeInTheDocument());
     });
   });
 });

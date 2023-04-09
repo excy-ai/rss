@@ -1,19 +1,30 @@
 import axios from 'axios';
 
-export const rickAndMortyApiClient = axios.create({
+import { RickAndMortyCardProps } from 'types';
+
+const rickAndMortyAxios = axios.create({
   baseURL: 'https://rickandmortyapi.com/api/',
   timeout: 3000,
 });
 
-export const rickAndMortyApiRoutes = {
-  getCharacters: 'character/',
+export const rickAndMortyApiClient = {
+  getCharacters: (filter: string) =>
+    rickAndMortyAxios
+      .get<RickAndMortyApiPagingResponse<RickAndMortyCardProps>>('character/', {
+        params: {
+          name: filter,
+        },
+      })
+      .then((r) => r.data.results),
+  getCharacter: (id: string) =>
+    rickAndMortyAxios.get<RickAndMortyCardProps>(`character/${id}`).then((r) => r.data),
 };
 
 export interface RickAndMortyApiErrorResponse {
   error: string;
 }
 
-export interface RickAndMortyApiResponse<T> {
+export interface RickAndMortyApiPagingResponse<T> {
   info: {
     count: number;
     page: number;
