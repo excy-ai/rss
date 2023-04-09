@@ -137,7 +137,7 @@ const AddCardForm: FC<AddCardFormProps> = (props) => {
         />
       </Form>
       {isPopupOpened && (
-        <Popup>
+        <Popup onBackgroundClick={togglePopup}>
           <ConfirmationDialog text="Data has been saved" onOkClick={clearForm} />
         </Popup>
       )}

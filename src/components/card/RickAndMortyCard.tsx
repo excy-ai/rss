@@ -9,21 +9,32 @@ import { onImageError } from 'utils';
 
 import 'components/card/Card.scss';
 
+const getTitle = (title: string) => (title.length > 25 ? title.substring(0, 25) : title);
+
+const CardDetails: FC<RickAndMortyCardProps> = ({ id, name, status, species, gender, image }) => {
+  const title = getTitle(name);
+
+  return (
+    <div className="card-popup">
+      <h3>{title}</h3>
+      <CardField caption="ID">{id}</CardField>
+      <CardField caption="Status">{status}</CardField>
+      <CardField caption="Species">{species}</CardField>
+      <CardField caption="Gender">{gender}</CardField>
+      <img className={'card-popup__image'} src={image} onError={onImageError} alt={title} />
+    </div>
+  );
+};
+
 const RickAndMortyCard: FC<RickAndMortyCardProps> = (props) => {
   const [isPopupOpened, setIsPopupOpened] = useState(false);
   const togglePopup = () => setIsPopupOpened(!isPopupOpened);
-  const { id, name, status, species, gender, image } = props;
-  const title = name.length > 25 ? name.substring(0, 25) : name;
+
+  const { id, name, image } = props;
+  const title = getTitle(name);
   const popupInfo = (
     <Popup onBackgroundClick={togglePopup}>
-      <div className="card-popup">
-        <h3>{title}</h3>
-        <CardField caption="ID">{id}</CardField>
-        <CardField caption="Status">{status}</CardField>
-        <CardField caption="Species">{species}</CardField>
-        <CardField caption="Gender">{gender}</CardField>
-        <img className={'card-popup__image'} src={image} onError={onImageError} alt={title} />
-      </div>
+      <CardDetails {...props} />
     </Popup>
   );
 

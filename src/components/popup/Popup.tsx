@@ -16,7 +16,12 @@ const Popup: FC<PopupProps> = (props) => {
   const offset = props.offset || BASIC_OFFSET;
   return createPortal(
     <div onClick={props.onBackgroundClick} style={{ zIndex: offset }} className="popup__background">
-      <div className="popup">{props.children}</div>
+      <div className="popup" onClick={(e) => e.stopPropagation()}>
+        <button onClick={props.onBackgroundClick} className="popup__cross">
+          &#215;
+        </button>
+        {props.children}
+      </div>
     </div>,
     document.body
   );
