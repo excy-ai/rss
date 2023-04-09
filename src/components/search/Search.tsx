@@ -5,7 +5,7 @@ import { SearchProps } from 'types';
 import 'components/search/Search.scss';
 
 const Search: FC<SearchProps> = (props) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(props.query || '');
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
   };
