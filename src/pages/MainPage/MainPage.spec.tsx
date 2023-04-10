@@ -139,7 +139,7 @@ describe('MainPage', () => {
     render(<MainPage />, { wrapper: BrowserRouter });
     expect(screen.getByText(/Rick And Morty/i)).toBeInTheDocument();
   });
-  it('should show no data loaded', async () => {
+  it('should show data loaded', async () => {
     mockedAxios.get.mockRejectedValueOnce(errorResult);
     render(<MainPage />, { wrapper: BrowserRouter });
     await waitFor(() => {
@@ -156,7 +156,7 @@ describe('MainPage', () => {
       expect(cardIds.length).toBe(dataResult.results.length);
     });
   });
-  it('popupOpened', async () => {
+  it('should show opened popup on card click', async () => {
     mockedAxios.get.mockResolvedValueOnce({ data: dataResult });
     mockedAxios.get.mockResolvedValueOnce({ data: dataResult.results[1] });
     render(<MainPage />, { wrapper: BrowserRouter });
