@@ -1,18 +1,18 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 import { lifespans, temperaments, weights } from 'api/values.json';
 import { CatCardList } from 'components/card/CatCardList';
 import AddCardForm from 'components/form/AddCardForm';
-import { CatCardProps } from 'types';
+import { useAppSelector } from 'hooks/redux';
+import { useActions } from 'hooks/useActions';
+import { selectFormCards } from 'store/slices/formReducer';
 
 import 'pages/FormPage/FormPage.scss';
 
 const FormPage: FC = () => {
-  const [cards, setCards] = useState<CatCardProps[]>([]);
+  const cards = useAppSelector(selectFormCards);
+  const { addFormCard } = useActions();
 
-  const handleSubmit = (card: CatCardProps) => {
-    setCards([...cards, card]);
-  };
   return (
     <div className="form-page">
       <aside className="form-page__sidebar">
@@ -20,7 +20,7 @@ const FormPage: FC = () => {
           weights={weights}
           temperaments={temperaments}
           lifespans={lifespans}
-          handleSubmit={handleSubmit}
+          handleSubmit={addFormCard}
         />
       </aside>
       <CatCardList data={cards} className="form-page__content" />
