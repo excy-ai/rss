@@ -5,7 +5,7 @@ import { CatCardList } from 'components/card/CatCardList';
 import AddCardForm from 'components/form/AddCardForm';
 import { useAppSelector } from 'hooks/redux';
 import { useActions } from 'hooks/useActions';
-import { selectFormCards } from 'store/slices/formReducer';
+import { selectFormCards } from 'store/slices/formSlice';
 
 import 'pages/FormPage/FormPage.scss';
 

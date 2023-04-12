@@ -1,5 +1,5 @@
-import { formActions } from 'store/slices/formReducer';
-import { mainActions } from 'store/slices/mainReducer';
+import { formActions } from 'store/slices/formSlice';
+import { mainActions } from 'store/slices/mainSlice';
 
 export const actionCreators = {
   ...formActions,

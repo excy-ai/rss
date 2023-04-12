@@ -1,4 +1,4 @@
-import { ReactNode, RefObject } from 'react';
+import { ReactNode } from 'react';
 
 import { FieldValues } from 'react-hook-form';
 
@@ -55,7 +55,6 @@ export interface InputFieldProps {
 
 export interface SearchProps {
   query?: string;
-  refProp?: RefObject<HTMLInputElement>;
   onSearch?: (query: string) => void;
 }
 

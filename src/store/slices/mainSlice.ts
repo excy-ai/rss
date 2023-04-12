@@ -1,25 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RootState } from 'store/index';
-import { RickAndMortyCardProps } from 'types';
 
 interface MainState {
-  cards: RickAndMortyCardProps[];
+  query: string;
 }
 
 const initialState: MainState = {
-  cards: [],
+  query: '',
 };
 
 const mainSlice = createSlice({
   name: 'mainSlice',
   initialState,
   reducers: {
-    addMainCard: (state, action: PayloadAction<RickAndMortyCardProps>) => {
-      state.cards.push(action.payload);
+    setQuery: (state, action: PayloadAction<string>) => {
+      state.query = action.payload;
     },
     setInitialState: (state) => {
-      state.cards = [];
+      state.query = '';
     },
   },
 });
@@ -27,4 +26,4 @@ const mainSlice = createSlice({
 export const mainActions = mainSlice.actions;
 export default mainSlice.reducer;
 
-export const selectMainCards = (state: RootState) => state.mainReducer.cards;
+export const selectQuery = (state: RootState) => state.mainReducer.query;
