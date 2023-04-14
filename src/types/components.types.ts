@@ -2,7 +2,17 @@ import { ReactNode, RefObject } from 'react';
 
 import { FieldValues } from 'react-hook-form';
 
-export interface CardProps {
+export interface RickAndMortyCardProps {
+  id: string;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  image: string;
+}
+
+export interface CatCardProps {
   id?: string;
   date?: string;
   weight: string;
@@ -46,7 +56,7 @@ export interface InputFieldProps {
 export interface SearchProps {
   query?: string;
   refProp?: RefObject<HTMLInputElement>;
-  onChange?: (query: string) => void;
+  onSearch?: (query: string) => void;
 }
 
 export interface SelectFieldProps {

@@ -1,27 +1,43 @@
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 
 import { SearchProps } from 'types';
 
 import 'components/search/Search.scss';
 
 const Search: FC<SearchProps> = (props) => {
+  const [query, setQuery] = useState(props.query || '');
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    props.onChange?.(event.target.value);
+    setQuery(event.target.value);
   };
 
   return (
-    <div className={'search-bar'}>
+    <div
+      className={'search-bar'}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter') {
+          props.onSearch?.(query);
+        }
+      }}
+    >
       <label htmlFor={'main-search'} className={'search-label'}>
-        Breed filter
+        Rick And Morty character search
         <input
           id={'main-search'}
           className={'search-input'}
           placeholder={'type something...'}
           ref={props.refProp}
-          value={props.query}
+          value={query}
           onChange={onChange}
         />
       </label>
+      <button
+        id={'main-search'}
+        data-testid={'main-search'}
+        className={'search-input__button'}
+        onClick={() => {
+          props.onSearch?.(props.refProp?.current?.value || '');
+        }}
+      />
     </div>
   );
 };

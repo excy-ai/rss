@@ -2,20 +2,20 @@ import { FC } from 'react';
 
 import classNames from 'classnames';
 
-import Card from 'components/card/Card';
-import { CardProps } from 'types';
+import CatCard from 'components/card/CatCard';
+import { CatCardProps } from 'types';
 
 import './CardList.scss';
 
 type CardListProps = {
-  data: CardProps[];
+  data: CatCardProps[];
   className?: string;
 };
 
-export const CardList: FC<CardListProps> = (props) => (
+export const CatCardList: FC<CardListProps> = (props) => (
   <div className={classNames('card-list', props.className)}>
     {props.data.map((it) => (
-      <Card key={it.id || it.name} {...it} />
+      <CatCard key={it.id || it.name} {...it} />
     ))}
   </div>
 );

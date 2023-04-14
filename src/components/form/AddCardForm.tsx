@@ -7,7 +7,7 @@ import Form from 'components/form/Form';
 import InputField from 'components/input/InputField';
 import Popup from 'components/popup/Popup';
 import SelectField from 'components/select/SelectField';
-import { AddCardFormProps, CardProps } from 'types';
+import { AddCardFormProps, CatCardProps } from 'types';
 import { generateId } from 'utils';
 
 import './AddCardForm.scss';
@@ -36,7 +36,7 @@ const AddCardForm: FC<AddCardFormProps> = (props) => {
     const { breed, date, temperament, lifespan, weight, image } = data;
     const file = image ? image[0] : undefined;
     const imageUrl = file ? URL.createObjectURL(file) : undefined;
-    const card: CardProps = {
+    const card: CatCardProps = {
       id: generateId(),
       date,
       weight: weight,
@@ -137,7 +137,7 @@ const AddCardForm: FC<AddCardFormProps> = (props) => {
         />
       </Form>
       {isPopupOpened && (
-        <Popup>
+        <Popup onBackgroundClick={togglePopup}>
           <ConfirmationDialog text="Data has been saved" onOkClick={clearForm} />
         </Popup>
       )}
