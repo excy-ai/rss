@@ -16,9 +16,9 @@ const MainPage: FC = () => {
   const query = useAppSelector(selectQuery);
   const { setQuery } = useActions();
   const [debouncedQuery] = useDebounce(query, 750);
-  const { data, isFetching, error } = useFetchCardsQuery(debouncedQuery);
+  const { data, isFetching, isError } = useFetchCardsQuery(debouncedQuery);
   const cards = data || [];
-  const cardList = error ? (
+  const cardList = isError ? (
     <p>{'There is nothing here'}</p>
   ) : (
     <>
