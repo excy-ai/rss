@@ -1,37 +1,36 @@
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 
+import { cardsListResponseMock } from 'mocks/apiMocks';
+import { handlersMap } from 'mocks/handlers';
+import { server } from 'mocks/server';
 import MainPage from 'pages/MainPage/MainPage';
 import { renderWithProviders } from 'utils/test-utils';
 
 describe('MainPage', () => {
   it('should contains search', () => {
-    // mockedAxios.get.mockRejectedValueOnce(errorResult);
+    server.use(handlersMap.error);
     renderWithProviders(<MainPage />);
     expect(screen.getByText(/Rick And Morty/i)).toBeInTheDocument();
   });
   it('should show data loaded', async () => {
-    // mockedAxios.get.mockRejectedValueOnce(errorResult);
+    server.use(handlersMap.error);
     renderWithProviders(<MainPage />);
     await waitFor(() => {
       expect(screen.queryByText(/There is nothing here/i)).toBeInTheDocument();
-      // expect(mockedAxios.get).toHaveBeenCalled();
     });
   });
   it('should show no data loaded', async () => {
-    // mockedAxios.get.mockResolvedValueOnce({ data: dataResult });
+    server.use(handlersMap.successList);
     renderWithProviders(<MainPage />);
     await waitFor(() => {
-      // expect(mockedAxios.get).toHaveBeenCalled();
       const cardIds = screen.queryAllByText(/ID/);
-      // expect(cardIds.length).toBe(dataResult.results.length);
+      expect(cardIds.length).toBe(cardsListResponseMock.results.length);
     });
   });
   it('should show opened popup on card click', async () => {
-    // mockedAxios.get.mockResolvedValueOnce({ data: dataResult });
-    // mockedAxios.get.mockResolvedValueOnce({ data: dataResult.results[1] });
+    server.use(handlersMap.successList, handlersMap.successSingle);
     renderWithProviders(<MainPage />);
     await waitFor(async () => {
-      // expect(mockedAxios.get).toHaveBeenCalled();
       const card = screen.getByText(/Evil Summer Clone/i);
       expect(card).toBeInTheDocument();
       fireEvent.click(card);
