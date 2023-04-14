@@ -1,6 +1,5 @@
-import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 import CatCard from 'components/card/CatCard';
 
@@ -15,9 +14,9 @@ const testCatData = {
   reference_image_id: '',
 };
 
-describe('Card', () => {
+describe('CatCard', () => {
   it('should contain card with fields', () => {
-    render(<CatCard {...testCatData} />, { wrapper: BrowserRouter });
+    render(<CatCard {...testCatData} />, { wrapper: MemoryRouter });
     expect(screen.getByText(/Temperament/i)).toBeInTheDocument();
     expect(screen.getByText(testCatData.name)).toBeInTheDocument();
     const flagImg: HTMLImageElement = screen.getByAltText('flag');
@@ -25,17 +24,17 @@ describe('Card', () => {
     expect(screen.getByText(new RegExp(testCatData.wikipedia_url, 'i'))).toBeInTheDocument();
   });
   it('should contain no details', () => {
-    const { container } = render(<CatCard {...testCatData} />, { wrapper: BrowserRouter });
+    const { container } = render(<CatCard {...testCatData} />, { wrapper: MemoryRouter });
     expect(container.querySelector('details')).toBeNull();
   });
   it('should contain details', () => {
     const { container } = render(<CatCard {...testCatData} description={'some description'} />, {
-      wrapper: BrowserRouter,
+      wrapper: MemoryRouter,
     });
     expect(container.querySelector('details')).toBeInTheDocument();
   });
   it('should call image error', () => {
-    render(<CatCard {...testCatData} />, { wrapper: BrowserRouter });
+    render(<CatCard {...testCatData} />, { wrapper: MemoryRouter });
     fireEvent.error(screen.getByAltText(testCatData.name));
     const image: HTMLImageElement = screen.getByAltText(testCatData.name);
     expect(image.src).toContain('not-found');

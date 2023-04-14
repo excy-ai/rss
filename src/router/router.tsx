@@ -4,7 +4,7 @@ import BaseLayout from 'components/layouts/base/BaseLayout';
 import pages from 'pages';
 import routes from 'router/routes';
 
-const router = createBrowserRouter([
+export const routesConfig = [
   {
     path: routes.main,
     element: <BaseLayout />,
@@ -31,6 +31,8 @@ const router = createBrowserRouter([
     path: routes.notFound,
     element: pages.NotFound,
   },
-]);
+];
+
+const router = createBrowserRouter(routesConfig);
 
 export default router;

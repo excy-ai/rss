@@ -25,7 +25,6 @@ const Search: FC<SearchProps> = (props) => {
           id={'main-search'}
           className={'search-input'}
           placeholder={'type something...'}
-          ref={props.refProp}
           value={query}
           onChange={onChange}
         />
@@ -35,7 +34,7 @@ const Search: FC<SearchProps> = (props) => {
         data-testid={'main-search'}
         className={'search-input__button'}
         onClick={() => {
-          props.onSearch?.(props.refProp?.current?.value || '');
+          props.onSearch?.(query);
         }}
       />
     </div>
